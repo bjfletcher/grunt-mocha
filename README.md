@@ -248,6 +248,27 @@ mocha: {
 
 The PhantomJS -> Grunt superdimensional conduit uses `alert`. If you have disabled or aliased alert in your app, this won't work. I have conveniently set a global `PHANTOMJS` on `window` so you can conditionally override alert in your app.
 
+## Screenshotting
+
+To take a screenshot:
+```js
+var container = $('article')[0]; // or any DOM node
+console.log(JSON.stringify({
+  action: 'render', // mandatory
+  filename: 'screenshots/article.png', // mandatory
+  clipRect: container.getBoundingClientRect() // optional
+}));
+```
+
+To change the resolution of the viewport:
+```js
+console.log(JSON.stringify({
+  action: 'viewportSize', // mandatory
+  width: '960', // mandatory
+  height: '960' // mandatory
+}));
+```
+
 ## Examples
 
 ### Vanilla JS

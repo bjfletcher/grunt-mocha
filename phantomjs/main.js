@@ -80,6 +80,21 @@ page.onAlert = function(str) {
 
 // Relay console logging messages.
 page.onConsoleMessage = function(message) {
+  try {
+    var json = JSON.parse(message);
+    if (json.action === 'viewportSize') {
+      sendMessage('console', 'Changing viewport to width: ' + json.width + ' and height: ' + json.height);
+      page.viewportSize = { width: json.width, height: json.height };
+    } else if (json.action === 'render') {
+      sendMessage('console', 'Taking a screenshot to file: ' + json.filename);
+      if (page.clipRect) {
+        page.clipRect = json.clipRect;
+      }
+      page.render(json.filename);
+    }
+  } catch(err) {
+      sendMessage('console', 'Console message could not be parsed.');
+  }
   sendMessage('console', message);
 };
 
