@@ -1,6 +1,6 @@
 {
-  "name": "grunt-mocha",
-  "description": "Grunt task for running client-side Mocha specs in PhantomJS",
+  "name": "grunt-mocha-screenshot",
+  "description": "grunt-mocha with screenshot added pending pull request",
   "version": "0.4.10",
   "homepage": "https://github.com/kmiyashiro/grunt-mocha",
   "author": {
